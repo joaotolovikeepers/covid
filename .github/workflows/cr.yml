@@ -1,20 +1,19 @@
-name: Code Review GPT
-
+name: Codeball
 on:
-  pull_request:
-    branches: [main]
+  pull_request: {}
+  pull_request_review_comment:
+    types: [created, edited]
 
 jobs:
-  run_code_review:
+  codeball_job:
     runs-on: ubuntu-latest
+    name: Codeball
     steps:
-      - uses: actions/checkout@v3
+      - name: Codeball
+        uses: sturdy-dev/codeball-action@v2
         with:
-          fetch-depth: 0
-
-      - name: Code Review GPT
-        uses: mattzcarey/code-review-gpt@v0.1.4-alpha
-        with:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          MODEL: 'gpt-3.5-turbo'
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # For all configuration options see https://github.com/sturdy-dev/codeball-action/blob/v2/action.yml
+          approvePullRequests: "true"
+          labelPullRequestsWhenApproved: "true"
+          labelPullRequestsWhenReviewNeeded: "false"
+          failJobsWhenReviewNeeded: "false"
