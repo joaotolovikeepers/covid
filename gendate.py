@@ -2,6 +2,7 @@ import pandas as pd
 import faker
 import random
 
+
 numero_de_pessoas = 500
 
 fake = faker.Faker()
