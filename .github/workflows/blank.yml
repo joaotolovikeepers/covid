@@ -2,13 +2,14 @@
 
 name: CI
 
+
 # Controls when the workflow will run
 on:
   pull_request:
     types:
       - opened
       - synchronize
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+
 jobs:
   # This workflow contains a single job called "build"
   review:
@@ -24,3 +25,5 @@ jobs:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENAI_API_MODEL: "gpt-4" # Optional: defaults to "gpt-4"
           exclude: "**/*.json, **/*.md"
+
+
